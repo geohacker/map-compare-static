@@ -1,0 +1,7 @@
+{
+  "name": "map-compare-static",
+  "version": "0.0.0",
+  "dependencies": {
+    "phantom": "^0.7.2"
+  }
+}
