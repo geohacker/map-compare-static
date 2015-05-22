@@ -7,7 +7,8 @@ var places = [];
 var collection = [];
 var isLast = false;
 
-var places = fs.readFileSync('cities.list').toString().split("\n");
+var fileName = process.argv[2];
+var places = fs.readFileSync(fileName).toString().split("\n");
 for (var i = 0; i < places.length; i++) {
     place = places[i];
     if (i == (places.length - 1)) {
@@ -19,7 +20,6 @@ for (var i = 0; i < places.length; i++) {
 };
 
 function geocode (place, isLast) {
-    // var nominatimUrl = 'http://nominatim.openstreetmap.org/search/'+place+'?format=json&addressdetails=1&limit=1';
     // mapbox api.tiles.mapbox.com/v4/geocode/mapbox.places/Pune.json?access_token=pk.eyJ1IjoiZ2VvaGFja2VyIiwiYSI6ImFIN0hENW8ifQ.GGpH9gLyEg0PZf3NPQ7Vrg
     http.get({
         host: 'api.tiles.mapbox.com',
