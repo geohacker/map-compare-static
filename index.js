@@ -43,14 +43,18 @@ function compare (coordinate) {
     var pageUrl = 'http://lxbarth.com/compare/#14/'+coordinate[0]+'/'+coordinate[1];
     phantom.create("--ignore-ssl-errors=yes", "--ssl-protocol=any", function (ph) {
         ph.createPage(function (page) {
-                page.open(pageUrl, function(status) {
-                    setTimeout(function(){
-                        page.render('screenshot.png', function(finished){
-                            console.log('rendering '+pageUrl+' done');
-                            ph.exit();
-                        });                         
-                    }, 5000);
+            page.set('viewportSize', {width:1280,height:900}, function(){
+                page.set('clipRect', {top:0,left:0,width:1280,height:900}, function(){
+                    page.open(pageUrl, function(status) {
+                        setTimeout(function(){
+                            page.render('screenshot.png', function(finished){
+                                console.log('rendering '+pageUrl+' done');
+                                ph.exit();
+                            });
+                        }, 6000);
+                    });
                 });
             });
         });
+    });
 }
