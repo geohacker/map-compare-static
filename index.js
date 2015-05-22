@@ -3,7 +3,6 @@ var http = require('http');
 var phantom = require('phantom');
 var async = require('async');
 
-var places = [];
 var collection = [];
 var isLast = false;
 
